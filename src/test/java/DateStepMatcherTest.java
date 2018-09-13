@@ -39,7 +39,7 @@ public class DateStepMatcherTest {
 	}
 
 	@Test
-	public void matchEveryDayBetweenSameDate() {
+	public void matchExactMultipleChronoUnitDifference() {
 		DateStepMatcher matcher = new DateStepMatcher(step, chronoUnit);
 
 		LocalDate date = LocalDate.now();

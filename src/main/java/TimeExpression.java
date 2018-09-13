@@ -11,35 +11,38 @@ import java.time.temporal.WeekFields;
 
 public class TimeExpression {
 
-    public static TimeExpression on(LocalDate aDate) {
-    	return new OnSpecificDateTimeExpression(aDate);
-    }
+	public static TimeExpression on(LocalDate aDate) {
+		return new OnSpecificDateTimeExpression(aDate);
+	}
 
-    public static TimeExpression dailyEveryFromOnwards(int anAmountOfDays, LocalDate aDate) {
+	public static TimeExpression dailyEveryFromOnwards(int anAmountOfDays, LocalDate aDate) {
 		return new EveryOnFromOnwardsTimeExpression(new DateStepMatcher(anAmountOfDays, ChronoUnit.DAYS), aDate);
-    }
+	}
 
-    public static TimeExpression monthlyEveryOnFromOnwards(int anAmountOfMonths, int aDayInMonth, YearMonth anYear) {
+	public static TimeExpression monthlyEveryOnFromOnwards(int anAmountOfMonths, int aDayInMonth, YearMonth anYear) {
 		LocalDate startDate = LocalDate.of(anYear.getYear(), anYear.getMonth(), aDayInMonth);
 		return new EveryOnFromOnwardsTimeExpression(new DateStepMatcher(anAmountOfMonths, ChronoUnit.MONTHS), startDate);
-    }
+	}
 
-    public static TimeExpression monthlyEveryOnOfFromOnwards(int anAmountOfMonths, DayOfWeek aDayOfWeek, int aWeekInMonth, YearMonth anYear) {
-		LocalDate firstDayOfMonth = LocalDate.of(anYear.getYear(), anYear.getMonth(), 1 );
+	public static TimeExpression monthlyEveryOnOfFromOnwards(int anAmountOfMonths, DayOfWeek aDayOfWeek, int aWeekInMonth, YearMonth anYear) {
+		LocalDate firstDayOfMonth = LocalDate.of(anYear.getYear(), anYear.getMonth(), 1);
 
 		LocalDate startDate = firstDayOfMonth
-				.with(ChronoField.ALIGNED_WEEK_OF_MONTH, aWeekInMonth);
-//				.with(ChronoField.DAY_OF_WEEK, aDayOfWeek.getValue());
+				.plusWeeks(aWeekInMonth)
+				.with(ChronoField.DAY_OF_WEEK, aDayOfWeek.getValue());
 
-		return new EveryOnFromOnwardsTimeExpression(new DateStepMatcher(anAmountOfMonths, ChronoUnit.MONTHS), startDate);
-    }
+//		LocalDate startDate =
+//				anYear.atDay(1).with(TemporalAdjusters.dayOfWeekInMonth(aDayOfWeek.getValue(), aDayOfWeek));
 
-    public static TimeExpression yearlyEveryOnFromOnwards(int anAmountOfYears, MonthDay aMonthDay, int anYear) {
+		return new OccurrenceTimeExpression(new TimeOccurrence(startDate, new DayOfWeekInMonthPoint(1, DayOfWeek.FRIDAY), new MonthlyStep(anAmountOfMonths)));
+	}
+
+	public static TimeExpression yearlyEveryOnFromOnwards(int anAmountOfYears, MonthDay aMonthDay, int anYear) {
 		LocalDate startDate = LocalDate.of(anYear, aMonthDay.getMonth(), aMonthDay.getDayOfMonth());
 		return new EveryOnFromOnwardsTimeExpression(new DateStepMatcher(anAmountOfYears, ChronoUnit.YEARS), startDate);
-    }
+	}
 
-    public boolean isRecurringOn(LocalDate aDate) {
-        return false;
-    }
+	public boolean isRecurringOn(LocalDate aDate) {
+		return false;
+	}
 }

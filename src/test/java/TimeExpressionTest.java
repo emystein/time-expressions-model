@@ -59,6 +59,7 @@ public class TimeExpressionTest extends TestCase {
         assertFalse(everyTwoDaysFromTodayToTheNextSevenDaysTimeExp.isRecurringOn(today.plusDays(5)));
         assertTrue(everyTwoDaysFromTodayToTheNextSevenDaysTimeExp.isRecurringOn(today.plusDays(6)));
         assertTrue(everyTwoDaysFromTodayToTheNextSevenDaysTimeExp.isRecurringOn(today.plusDays(30000)));
+        // FIXME: I think this assertion is wrong, should be assertFalse instead of assertTrue
         assertTrue(everyTwoDaysFromTodayToTheNextSevenDaysTimeExp.isRecurringOn(today.plusDays(30001)));
     }
 
