@@ -1,7 +1,9 @@
 import java.time.LocalDate;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
+@Getter
 public class DateStep {
 	private final int step;
 	private final StepCommand stepCommand;
