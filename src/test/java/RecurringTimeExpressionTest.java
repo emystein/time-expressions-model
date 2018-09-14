@@ -5,26 +5,26 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 import org.junit.Test;
 
-public class OccurrenceTimeExpressionTest {
+public class RecurringTimeExpressionTest {
 	LocalDate startDate = LocalDate.of(2018, 9, 1);
 
 	@Test
 	public void everyMonthOccurrenceSameEndDateAsStartDate() {
-		OccurrenceTimeExpression occurrence = new OccurrenceTimeExpression(startDate, new SpecificDatePoint(), new DateStep(1, new MonthlyStepCommand()));
+		RecurringTimeExpression occurrence = new RecurringTimeExpression(startDate, new SpecificDatePoint(), new DateStep(1, new MonthlyStepCommand()));
 
 		assertTrue(occurrence.isRecurringOn(startDate));
 	}
 
 	@Test
 	public void everyMonthOccurrence() {
-		OccurrenceTimeExpression occurrence = new OccurrenceTimeExpression(startDate, new SpecificDatePoint(), new DateStep(1, new MonthlyStepCommand()));
+		RecurringTimeExpression occurrence = new RecurringTimeExpression(startDate, new SpecificDatePoint(), new DateStep(1, new MonthlyStepCommand()));
 
 		assertTrue(occurrence.isRecurringOn(startDate.plusMonths(1)));
 	}
 
 	@Test
 	public void everyTwoMonthsOccurrence() {
-		OccurrenceTimeExpression occurrence = new OccurrenceTimeExpression(startDate, new SpecificDatePoint(), new DateStep(2, new MonthlyStepCommand()));
+		RecurringTimeExpression occurrence = new RecurringTimeExpression(startDate, new SpecificDatePoint(), new DateStep(2, new MonthlyStepCommand()));
 
 		assertFalse(occurrence.isRecurringOn(startDate.plusMonths(1)));
 		assertTrue(occurrence.isRecurringOn(startDate.plusMonths(2)));
@@ -35,7 +35,7 @@ public class OccurrenceTimeExpressionTest {
 	public void everyFirstFriday() {
 		LocalDate firstFridayOfJanuary2012 = LocalDate.of(2012, 1, 6);
 
-		OccurrenceTimeExpression occurrence = new OccurrenceTimeExpression(firstFridayOfJanuary2012, new DayOfWeekInMonthPoint(1, DayOfWeek.FRIDAY), new DateStep(1, new MonthlyStepCommand()));
+		RecurringTimeExpression occurrence = new RecurringTimeExpression(firstFridayOfJanuary2012, new DayOfWeekInMonthPoint(1, DayOfWeek.FRIDAY), new DateStep(1, new MonthlyStepCommand()));
 
 		assertTrue(occurrence.isRecurringOn(firstFridayOfJanuary2012)); // first friday of january
 		assertFalse(occurrence.isRecurringOn(firstFridayOfJanuary2012.plusWeeks(1)));
@@ -57,7 +57,7 @@ public class OccurrenceTimeExpressionTest {
 	public void theFirstFridayEveryTwoMonths() {
 		LocalDate firstFridayOfJanuary2012 = LocalDate.of(2012, 1, 6);
 
-		OccurrenceTimeExpression occurrence = new OccurrenceTimeExpression(firstFridayOfJanuary2012, new DayOfWeekInMonthPoint(1, DayOfWeek.FRIDAY), new DateStep(2, new MonthlyStepCommand()));
+		RecurringTimeExpression occurrence = new RecurringTimeExpression(firstFridayOfJanuary2012, new DayOfWeekInMonthPoint(1, DayOfWeek.FRIDAY), new DateStep(2, new MonthlyStepCommand()));
 
 		assertTrue(occurrence.isRecurringOn(firstFridayOfJanuary2012)); // first friday of january
 		assertFalse(occurrence.isRecurringOn(firstFridayOfJanuary2012.plusWeeks(1)));
@@ -79,7 +79,7 @@ public class OccurrenceTimeExpressionTest {
 	public void every8thOfMonth() {
 		LocalDate january8th = LocalDate.of(2012, 1, 8);
 
-		OccurrenceTimeExpression occurrence = new OccurrenceTimeExpression(january8th, new DayOfMonthPoint(8), new DateStep(1, new MonthlyStepCommand()));
+		RecurringTimeExpression occurrence = new RecurringTimeExpression(january8th, new DayOfMonthPoint(8), new DateStep(1, new MonthlyStepCommand()));
 
 		assertTrue(occurrence.isRecurringOn(january8th));
 		assertFalse(occurrence.isRecurringOn(january8th.plusWeeks(1)));
@@ -97,7 +97,7 @@ public class OccurrenceTimeExpressionTest {
 	public void on8thOfMonthEveryTwoMonths() {
 		LocalDate january8th = LocalDate.of(2012, 1, 8);
 
-		OccurrenceTimeExpression occurrence = new OccurrenceTimeExpression(january8th, new DayOfMonthPoint(8), new DateStep(2, new MonthlyStepCommand()));
+		RecurringTimeExpression occurrence = new RecurringTimeExpression(january8th, new DayOfMonthPoint(8), new DateStep(2, new MonthlyStepCommand()));
 
 		assertTrue(occurrence.isRecurringOn(january8th));
 		assertFalse(occurrence.isRecurringOn(january8th.plusWeeks(1)));

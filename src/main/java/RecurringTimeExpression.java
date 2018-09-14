@@ -2,7 +2,7 @@ import java.time.LocalDate;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public class OccurrenceTimeExpression extends TimeExpression {
+public class RecurringTimeExpression extends TimeExpression {
 	private final LocalDate startDate;
 	// TODO rename DatePoint
 	private final DatePoint matchDatePoint;
