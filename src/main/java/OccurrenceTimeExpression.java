@@ -10,7 +10,8 @@ public class OccurrenceTimeExpression extends TimeExpression {
 
 	@Override
 	public boolean isRecurringOn(LocalDate date) {
-		LocalDate adjustedDate = matchDatePoint.from(date);
+		LocalDate stepDate = timeStep.next(startDate, date);
+		LocalDate adjustedDate = matchDatePoint.from(stepDate);
 		return date.isEqual(adjustedDate);
 	}
 }
