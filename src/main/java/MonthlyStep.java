@@ -9,4 +9,15 @@ public class MonthlyStep implements DateStep {
 	public LocalDate next(LocalDate date) {
 		return date.plusMonths(step);
 	}
+
+	@Override
+	public LocalDate next(LocalDate startDate, LocalDate date) {
+		LocalDate lastStepDate = startDate;
+
+		while (lastStepDate.isBefore(date)) {
+			lastStepDate = next(lastStepDate);
+		}
+
+		return lastStepDate;
+	}
 }

@@ -1,13 +1,7 @@
-import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.MonthDay;
 import java.time.YearMonth;
-import java.time.temporal.ChronoField;
 import java.time.temporal.ChronoUnit;
-import java.time.temporal.Temporal;
-import java.time.temporal.TemporalAdjusters;
-import java.time.temporal.TemporalField;
-import java.time.temporal.WeekFields;
 
 public class TimeExpression {
 
@@ -24,17 +18,9 @@ public class TimeExpression {
 		return new EveryOnFromOnwardsTimeExpression(new DateStepMatcher(anAmountOfMonths, ChronoUnit.MONTHS), startDate);
 	}
 
-	public static TimeExpression monthlyEveryOnOfFromOnwards(int anAmountOfMonths, DayOfWeek aDayOfWeek, int aWeekInMonth, YearMonth anYear) {
-		LocalDate firstDayOfMonth = LocalDate.of(anYear.getYear(), anYear.getMonth(), 1);
-
-		LocalDate startDate = firstDayOfMonth
-				.plusWeeks(aWeekInMonth)
-				.with(ChronoField.DAY_OF_WEEK, aDayOfWeek.getValue());
-
-//		LocalDate startDate =
-//				anYear.atDay(1).with(TemporalAdjusters.dayOfWeekInMonth(aDayOfWeek.getValue(), aDayOfWeek));
-
-		return new OccurrenceTimeExpression(new TimeOccurrence(startDate, new DayOfWeekInMonthPoint(1, DayOfWeek.FRIDAY), new MonthlyStep(anAmountOfMonths)));
+	public static TimeExpression monthlyEveryOnOfFromOnwards(int anAmountOfMonths, YearMonth yearMonth, DatePoint startPoint) {
+		LocalDate startDate = startPoint.from(yearMonth.atDay(1));
+		return new OccurrenceTimeExpression(startDate, startPoint, new MonthlyStep(anAmountOfMonths));
 	}
 
 	public static TimeExpression yearlyEveryOnFromOnwards(int anAmountOfYears, MonthDay aMonthDay, int anYear) {

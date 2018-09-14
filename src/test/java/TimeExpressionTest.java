@@ -111,17 +111,16 @@ public class TimeExpressionTest extends TestCase {
 
     public void testRecursEveryMonthTheFirstFriday() {
         int oneMonth = 1; // you can change the Int type by the one you make up
-        int theFirstWeekOfTheMonth = 1; // you can change the Int type by the one you make up
         YearMonth januaryOf2012 = YearMonth.of(2012, 1);
         YearMonth mayOf2012 = YearMonth.of(2012, 5);
+		DatePoint theFirstWeekOfTheMonth = new DayOfWeekInMonthPoint(1, DayOfWeek.FRIDAY);
 
         TimeExpression everyMonthTheFirstFridayFromJanuary2012ToMay2012 =
             TimeExpression
                 .monthlyEveryOnOfFromOnwards(
                     oneMonth,
-                    DayOfWeek.FRIDAY,
-                    theFirstWeekOfTheMonth,
-                    januaryOf2012
+					januaryOf2012,
+                    theFirstWeekOfTheMonth
                 );
 
         LocalDate firstFridayOfJanuary2012 = LocalDate.of(2012, 1, 6);
@@ -143,17 +142,17 @@ public class TimeExpressionTest extends TestCase {
 
     public void testRecursEveryMonthTheLastFriday() {
         int oneMonth = 1; // you can change the Int type by the one you make up
-        int theFirstWeekOfTheMonth = 5;  // you can change the Int type by the one you make up
         YearMonth januaryOf2012 = YearMonth.of(2012, 1);
         YearMonth mayOf2012 = YearMonth.of(2012, 5);
+
+		DatePoint theLastWeekOfTheMonth = new LastDayOfWeekInMonthPoint(DayOfWeek.FRIDAY);
 
         TimeExpression everyMonthTheLastFridayFromJanuary2012ToMay2012 =
                 TimeExpression
                         .monthlyEveryOnOfFromOnwards(
                                 oneMonth,
-                                DayOfWeek.FRIDAY,
-                                theFirstWeekOfTheMonth,
-                                januaryOf2012
+								januaryOf2012,
+                                theLastWeekOfTheMonth
                         );
 
         LocalDate firstFridayOfJanuary2012 = LocalDate.of(2012, 1, 6);

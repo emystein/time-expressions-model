@@ -3,10 +3,14 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 public class OccurrenceTimeExpression extends TimeExpression {
-	private final TimeOccurrence timeOccurrence;
+	private final LocalDate startDate;
+	// TODO rename DatePoint
+	private final DatePoint matchDatePoint;
+	private final DateStep timeStep;
 
 	@Override
-	public boolean isRecurringOn(LocalDate aDate) {
-		return timeOccurrence.matches(aDate);
+	public boolean isRecurringOn(LocalDate date) {
+		LocalDate adjustedDate = matchDatePoint.from(date);
+		return date.isEqual(adjustedDate);
 	}
 }

@@ -8,15 +8,20 @@ public class TimeOccurrence {
 	private final DateStep timeStep;
 
 	public boolean matches(LocalDate date) {
-		LocalDate lastStepDate = startDate;
+//               LocalDate lastStepDate = startDate;
+//
+//               while (lastStepDate.isBefore(date)) {
+//                       lastStepDate = timeStep.next(lastStepDate);
+//               }
+//
+//
+//               LocalDate adjustedDate = startPoint.from(lastStepDate);
 
-		while (lastStepDate.isBefore(date)) {
-			lastStepDate = timeStep.next(lastStepDate);
-		}
+//               LocalDate adjustedDate = startPoint.from(date);
+//             return date.isEqual(startDate) || date.isEqual(adjustedDate);
 
-		LocalDate adjustedDate = startPoint.from(lastStepDate);
-
-//		return date.isEqual(startDate) || date.isEqual(adjustedDate);
+		LocalDate stepDate = timeStep.next(startDate, date);
+		LocalDate adjustedDate = startPoint.from(stepDate);
 		return date.isEqual(adjustedDate);
 	}
 }
