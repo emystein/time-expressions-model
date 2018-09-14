@@ -112,7 +112,7 @@ public class TimeExpressionTest extends TestCase {
         int oneMonth = 1; // you can change the Int type by the one you make up
         YearMonth januaryOf2012 = YearMonth.of(2012, 1);
         YearMonth mayOf2012 = YearMonth.of(2012, 5);
-		DatePoint theFirstWeekOfTheMonth = new DayOfWeekInMonthPoint(1, DayOfWeek.FRIDAY);
+		DateOccurrence theFirstWeekOfTheMonth = new DayOfWeekInMonthOccurrence(1, DayOfWeek.FRIDAY);
 
         TimeExpression everyMonthTheFirstFridayFromJanuary2012ToMay2012 =
             TimeExpression
@@ -143,7 +143,7 @@ public class TimeExpressionTest extends TestCase {
 		int twoMonths = 2; // you can change the Int type by the one you make up
 		YearMonth januaryOf2012 = YearMonth.of(2012, 1);
 		YearMonth mayOf2012 = YearMonth.of(2012, 5);
-		DatePoint theFirstWeekOfTheMonth = new DayOfWeekInMonthPoint(1, DayOfWeek.FRIDAY);
+		DateOccurrence theFirstWeekOfTheMonth = new DayOfWeekInMonthOccurrence(1, DayOfWeek.FRIDAY);
 
 		TimeExpression everyMonthTheFirstFridayFromJanuary2012ToMay2012 =
 				TimeExpression
@@ -175,7 +175,7 @@ public class TimeExpressionTest extends TestCase {
         YearMonth januaryOf2012 = YearMonth.of(2012, 1);
         YearMonth mayOf2012 = YearMonth.of(2012, 5);
 
-		DatePoint theLastWeekOfTheMonth = new LastDayOfWeekInMonthPoint(DayOfWeek.FRIDAY);
+		DateOccurrence theLastWeekOfTheMonth = new LastDayOfWeekInMonthOccurrence(DayOfWeek.FRIDAY);
 
         TimeExpression everyMonthTheLastFridayFromJanuary2012ToMay2012 =
                 TimeExpression

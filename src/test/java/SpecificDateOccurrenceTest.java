@@ -1,14 +1,13 @@
 import static org.junit.Assert.assertEquals;
 
-import java.time.DayOfWeek;
 import java.time.LocalDate;
 import org.junit.Test;
 
-public class SpecificDatePointTest {
+public class SpecificDateOccurrenceTest {
 	@Test
 	public void getDate() {
-		DatePoint datePoint = new SpecificDatePoint();
+		DateOccurrence dateOccurrence = new SpecificDateOccurrence();
 		LocalDate date = LocalDate.of(2012, 1, 27);
-		assertEquals(date, datePoint.from(date));
+		assertEquals(date, dateOccurrence.from(date));
 	}
 }

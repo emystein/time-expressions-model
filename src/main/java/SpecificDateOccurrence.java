@@ -1,6 +1,6 @@
 import java.time.LocalDate;
 
-public class SpecificDatePoint implements DatePoint {
+public class SpecificDateOccurrence implements DateOccurrence {
 	@Override
 	public LocalDate from(LocalDate date) {
 		return date;
