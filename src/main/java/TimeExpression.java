@@ -13,14 +13,15 @@ public class TimeExpression {
 		return new EveryOnFromOnwardsTimeExpression(new DateStepMatcher(anAmountOfDays, ChronoUnit.DAYS), aDate);
 	}
 
-	public static TimeExpression monthlyEveryOnFromOnwards(int anAmountOfMonths, int aDayInMonth, YearMonth anYear) {
-		LocalDate startDate = LocalDate.of(anYear.getYear(), anYear.getMonth(), aDayInMonth);
-		return new EveryOnFromOnwardsTimeExpression(new DateStepMatcher(anAmountOfMonths, ChronoUnit.MONTHS), startDate);
+	public static TimeExpression monthlyEveryOnFromOnwards(int anAmountOfMonths, int aDayInMonth, YearMonth yearMonth) {
+		DatePoint datePoint = new DayOfMonthPoint(aDayInMonth);
+		LocalDate startDate = datePoint.from(yearMonth.atDay(1));
+		return new OccurrenceTimeExpression(startDate, datePoint, new MonthlyStep(anAmountOfMonths));
 	}
 
-	public static TimeExpression monthlyEveryOnOfFromOnwards(int anAmountOfMonths, YearMonth yearMonth, DatePoint startPoint) {
-		LocalDate startDate = startPoint.from(yearMonth.atDay(1));
-		return new OccurrenceTimeExpression(startDate, startPoint, new MonthlyStep(anAmountOfMonths));
+	public static TimeExpression monthlyEveryOnOfFromOnwards(int anAmountOfMonths, YearMonth yearMonth, DatePoint datePoint) {
+		LocalDate startDate = datePoint.from(yearMonth.atDay(1));
+		return new OccurrenceTimeExpression(startDate, datePoint, new MonthlyStep(anAmountOfMonths));
 	}
 
 	public static TimeExpression yearlyEveryOnFromOnwards(int anAmountOfYears, MonthDay aMonthDay, int anYear) {
