@@ -140,6 +140,37 @@ public class TimeExpressionTest extends TestCase {
         assertTrue(everyMonthTheFirstFridayFromJanuary2012ToMay2012.isRecurringOn(firstFridayOfJanuary2012.plusWeeks(13))); // first friday of april
     }
 
+	public void testRecursEveryTwoMonthsTheFirstFriday() {
+		int twoMonths = 2; // you can change the Int type by the one you make up
+		YearMonth januaryOf2012 = YearMonth.of(2012, 1);
+		YearMonth mayOf2012 = YearMonth.of(2012, 5);
+		DatePoint theFirstWeekOfTheMonth = new DayOfWeekInMonthPoint(1, DayOfWeek.FRIDAY);
+
+		TimeExpression everyMonthTheFirstFridayFromJanuary2012ToMay2012 =
+				TimeExpression
+						.monthlyEveryOnOfFromOnwards(
+								twoMonths,
+								januaryOf2012,
+								theFirstWeekOfTheMonth
+						);
+
+		LocalDate firstFridayOfJanuary2012 = LocalDate.of(2012, 1, 6);
+		assertTrue(everyMonthTheFirstFridayFromJanuary2012ToMay2012.isRecurringOn(firstFridayOfJanuary2012)); // first friday of january
+		assertFalse(everyMonthTheFirstFridayFromJanuary2012ToMay2012.isRecurringOn(firstFridayOfJanuary2012.plusWeeks(1)));
+		assertFalse(everyMonthTheFirstFridayFromJanuary2012ToMay2012.isRecurringOn(firstFridayOfJanuary2012.plusWeeks(2)));
+		assertFalse(everyMonthTheFirstFridayFromJanuary2012ToMay2012.isRecurringOn(firstFridayOfJanuary2012.plusWeeks(3)));
+		assertFalse(everyMonthTheFirstFridayFromJanuary2012ToMay2012.isRecurringOn(firstFridayOfJanuary2012.plusWeeks(4))); // first friday of february
+		assertFalse(everyMonthTheFirstFridayFromJanuary2012ToMay2012.isRecurringOn(firstFridayOfJanuary2012.plusWeeks(5)));
+		assertFalse(everyMonthTheFirstFridayFromJanuary2012ToMay2012.isRecurringOn(firstFridayOfJanuary2012.plusWeeks(6)));
+		assertFalse(everyMonthTheFirstFridayFromJanuary2012ToMay2012.isRecurringOn(firstFridayOfJanuary2012.plusWeeks(7)));
+		assertTrue(everyMonthTheFirstFridayFromJanuary2012ToMay2012.isRecurringOn(firstFridayOfJanuary2012.plusWeeks(8))); // first friday of march
+		assertFalse(everyMonthTheFirstFridayFromJanuary2012ToMay2012.isRecurringOn(firstFridayOfJanuary2012.plusWeeks(9)));
+		assertFalse(everyMonthTheFirstFridayFromJanuary2012ToMay2012.isRecurringOn(firstFridayOfJanuary2012.plusWeeks(10)));
+		assertFalse(everyMonthTheFirstFridayFromJanuary2012ToMay2012.isRecurringOn(firstFridayOfJanuary2012.plusWeeks(11)));
+		assertFalse(everyMonthTheFirstFridayFromJanuary2012ToMay2012.isRecurringOn(firstFridayOfJanuary2012.plusWeeks(12)));
+		assertFalse(everyMonthTheFirstFridayFromJanuary2012ToMay2012.isRecurringOn(firstFridayOfJanuary2012.plusWeeks(13))); // first friday of april
+	}
+
     public void testRecursEveryMonthTheLastFriday() {
         int oneMonth = 1; // you can change the Int type by the one you make up
         YearMonth januaryOf2012 = YearMonth.of(2012, 1);

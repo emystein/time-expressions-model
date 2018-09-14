@@ -10,7 +10,7 @@ public class DayOfWeekInMonthPoint implements DatePoint {
 	private final DayOfWeek dayOfWeek;
 
 	@Override
-	public LocalDate from(LocalDate startingDate) {
-		return startingDate.withDayOfMonth(1).with(dayOfWeekInMonth(numberOfWeek, dayOfWeek));
+	public LocalDate from(LocalDate date) {
+		return date.withDayOfMonth(1).with(dayOfWeekInMonth(numberOfWeek, dayOfWeek));
 	}
 }

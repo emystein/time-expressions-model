@@ -5,7 +5,7 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 import org.junit.Test;
 
-public class MonthlyEveryOnOccurrenceTimeExpressionTest {
+public class OccurrenceTimeExpressionTest {
 	LocalDate startDate = LocalDate.of(2018, 9, 1);
 
 	@Test

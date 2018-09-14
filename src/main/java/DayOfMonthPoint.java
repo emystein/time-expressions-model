@@ -6,7 +6,7 @@ public class DayOfMonthPoint implements DatePoint {
 	private final int dayOfMonth;
 
 	@Override
-	public LocalDate from(LocalDate startingDate) {
-		return startingDate.withDayOfMonth(dayOfMonth);
+	public LocalDate from(LocalDate date) {
+		return date.withDayOfMonth(dayOfMonth);
 	}
 }

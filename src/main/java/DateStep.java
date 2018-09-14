@@ -7,7 +7,7 @@ public class DateStep {
 	private final StepCommand stepCommand;
 
 	public LocalDate next(LocalDate startDate, LocalDate date) {
-		// TODO: use polymorphism to model Monthly(1) and Monthly(x > 1) cases
+		// TODO: review this
 		LocalDate lastStepDate = step > 1 ? startDate : date;
 
 		while (lastStepDate.isBefore(date)) {
