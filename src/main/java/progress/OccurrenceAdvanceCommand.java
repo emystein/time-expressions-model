@@ -2,6 +2,6 @@ package progress;
 
 import java.time.LocalDate;
 
-public interface StepCommand {
+public interface OccurrenceAdvanceCommand {
 	LocalDate execute(LocalDate date, int step);
 }

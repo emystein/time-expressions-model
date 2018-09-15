@@ -2,9 +2,9 @@ package progress;
 
 import java.time.LocalDate;
 
-public class DailyStepCommand implements StepCommand {
+public class YearlyAdvanceCommand implements OccurrenceAdvanceCommand {
 	@Override
 	public LocalDate execute(LocalDate date, int step) {
-		return date.plusDays(step);
+		return date.plusYears(step);
 	}
 }

@@ -4,8 +4,8 @@ import static org.junit.Assert.assertTrue;
 import java.time.LocalDate;
 import org.junit.Test;
 import attribute.MonthCheck;
-import progress.DateStep;
-import progress.MonthlyStepCommand;
+import progress.OccurrenceAdvance;
+import progress.MonthlyAdvanceCommand;
 
 public class PeriodicityCheckTest {
 	LocalDate firstOfJanuary2012 = LocalDate.of(2012, 1, 1);
@@ -18,21 +18,21 @@ public class PeriodicityCheckTest {
 	public void givenADateAndAMonthlyPeriodicityWhenCheckingPeriodicityThenPeriodicityShouldMatch() {
 		LocalDate date = firstOfJanuary2012.plusWeeks(1);
 
-		PeriodicityCheck periodicityCheck = new PeriodicityCheck(firstOfJanuary2012, new DateStep(1, new MonthlyStepCommand()), new MonthCheck());
+		PeriodicityCheck periodicityCheck = new PeriodicityCheck(firstOfJanuary2012, new OccurrenceAdvance(1, new MonthlyAdvanceCommand()), new MonthCheck());
 
 		assertTrue(periodicityCheck.matches(date));
 	}
 
 	@Test
 	public void givenADateAndAMonthlyPeriodicityWithSameStartAsGivenDateWhenCheckingPeriodicityThenPeriodicityShouldMatch() {
-		PeriodicityCheck periodicityCheck = new PeriodicityCheck(firstOfJanuary2012, new DateStep(1, new MonthlyStepCommand()), new MonthCheck());
+		PeriodicityCheck periodicityCheck = new PeriodicityCheck(firstOfJanuary2012, new OccurrenceAdvance(1, new MonthlyAdvanceCommand()), new MonthCheck());
 
 		assertTrue(periodicityCheck.matches(firstOfJanuary2012));
 	}
 
 	@Test
 	public void givenADateTwoMonthsAheadOfStartDateAndAnEveryTwoMonthsPeriodicityWhenCheckingPeriodicityThenPeriodicityShouldMatch() {
-		PeriodicityCheck periodicityCheck = new PeriodicityCheck(firstOfJanuary2012, new DateStep(2, new MonthlyStepCommand()), new MonthCheck());
+		PeriodicityCheck periodicityCheck = new PeriodicityCheck(firstOfJanuary2012, new OccurrenceAdvance(2, new MonthlyAdvanceCommand()), new MonthCheck());
 
 		assertFalse(periodicityCheck.matches(month2Date));
 		assertTrue(periodicityCheck.matches(month3Date));

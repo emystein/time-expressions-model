@@ -4,11 +4,11 @@ import java.time.LocalDate;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public class DayOfMonthDescriptor implements DateEventDescriptor {
+public class DayOfMonthOccurrence implements EventOccurrence {
 	private final int dayOfMonth;
 
 	@Override
-	public LocalDate from(LocalDate date) {
+	public LocalDate adjust(LocalDate date) {
 		return date.withDayOfMonth(dayOfMonth);
 	}
 }

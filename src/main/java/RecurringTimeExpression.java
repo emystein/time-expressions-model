@@ -1,19 +1,18 @@
 import java.time.LocalDate;
-import event.DateEventDescriptor;
+import event.EventOccurrence;
 import lombok.RequiredArgsConstructor;
-import progress.DateStep;
+import progress.OccurrenceAdvance;
 
 @RequiredArgsConstructor
 public class RecurringTimeExpression extends TimeExpression {
 	private final LocalDate startDate;
-	// TODO rename event.DateEventDescriptor
-	private final DateEventDescriptor matchDateEventDescriptor;
-	private final DateStep timeStep;
+	private final EventOccurrence eventOccurrence;
+	private final OccurrenceAdvance dateStep;
 
 	@Override
 	public boolean isRecurringOn(LocalDate date) {
-		LocalDate stepDate = timeStep.next(startDate, date);
-		LocalDate adjustedDate = matchDateEventDescriptor.from(stepDate);
+		LocalDate stepDate = dateStep.next(startDate, date);
+		LocalDate adjustedDate = eventOccurrence.adjust(stepDate);
 		return date.isEqual(adjustedDate);
 	}
 }

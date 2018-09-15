@@ -1,12 +1,12 @@
 import java.time.LocalDate;
 import attribute.DateAttributeCheck;
 import lombok.RequiredArgsConstructor;
-import progress.DateStep;
+import progress.OccurrenceAdvance;
 
 @RequiredArgsConstructor
 public class PeriodicityCheck {
 	private final LocalDate startDate;
-	private final DateStep dateStep;
+	private final OccurrenceAdvance dateStep;
 	private final DateAttributeCheck dateAttributeCheck;
 
 	public boolean matches(LocalDate date) {

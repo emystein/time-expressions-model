@@ -2,9 +2,9 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.MonthDay;
 import java.time.YearMonth;
-import event.DateEventDescriptor;
-import event.DayOfWeekInMonthDescriptor;
-import event.LastDayOfWeekInMonthDescriptor;
+import event.EventOccurrence;
+import event.DayOfWeekInMonthOccurrence;
+import event.LastDayOfWeekInMonthOccurrence;
 import junit.framework.TestCase;
 
 // ¡ REMEMBER ! YOU CAN ONLY CHANGE PRIMITIVE TYPES SUCH AS the Integers I used to represent days, weeks, and so on
@@ -115,7 +115,7 @@ public class TimeExpressionTest extends TestCase {
         int oneMonth = 1; // you can change the Int type by the one you make up
         YearMonth januaryOf2012 = YearMonth.of(2012, 1);
         YearMonth mayOf2012 = YearMonth.of(2012, 5);
-		DateEventDescriptor theFirstWeekOfTheMonth = new DayOfWeekInMonthDescriptor(1, DayOfWeek.FRIDAY);
+		EventOccurrence theFirstWeekOfTheMonth = new DayOfWeekInMonthOccurrence(1, DayOfWeek.FRIDAY);
 
         TimeExpression everyMonthTheFirstFridayFromJanuary2012ToMay2012 =
             TimeExpression
@@ -146,7 +146,7 @@ public class TimeExpressionTest extends TestCase {
 		int twoMonths = 2; // you can change the Int type by the one you make up
 		YearMonth januaryOf2012 = YearMonth.of(2012, 1);
 		YearMonth mayOf2012 = YearMonth.of(2012, 5);
-		DateEventDescriptor theFirstWeekOfTheMonth = new DayOfWeekInMonthDescriptor(1, DayOfWeek.FRIDAY);
+		EventOccurrence theFirstWeekOfTheMonth = new DayOfWeekInMonthOccurrence(1, DayOfWeek.FRIDAY);
 
 		TimeExpression everyMonthTheFirstFridayFromJanuary2012ToMay2012 =
 				TimeExpression
@@ -178,7 +178,7 @@ public class TimeExpressionTest extends TestCase {
         YearMonth januaryOf2012 = YearMonth.of(2012, 1);
         YearMonth mayOf2012 = YearMonth.of(2012, 5);
 
-		DateEventDescriptor theLastWeekOfTheMonth = new LastDayOfWeekInMonthDescriptor(DayOfWeek.FRIDAY);
+		EventOccurrence theLastWeekOfTheMonth = new LastDayOfWeekInMonthOccurrence(DayOfWeek.FRIDAY);
 
         TimeExpression everyMonthTheLastFridayFromJanuary2012ToMay2012 =
                 TimeExpression

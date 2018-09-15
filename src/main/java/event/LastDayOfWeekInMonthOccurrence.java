@@ -7,11 +7,11 @@ import java.time.LocalDate;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public class LastDayOfWeekInMonthDescriptor implements DateEventDescriptor {
+public class LastDayOfWeekInMonthOccurrence implements EventOccurrence {
 	private final DayOfWeek dayOfWeek;
 
 	@Override
-	public LocalDate from(LocalDate date) {
+	public LocalDate adjust(LocalDate date) {
 		return date.withDayOfMonth(date.lengthOfMonth()).with(previousOrSame(dayOfWeek));
 	}
 }
