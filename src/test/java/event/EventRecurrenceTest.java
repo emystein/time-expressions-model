@@ -1,10 +1,11 @@
+package event;
+
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.time.LocalDate;
 import org.junit.Test;
 import arithmetic.MonthlyPeriodLength;
-import event.EventRecurrence;
 
 public class EventRecurrenceTest {
 	private LocalDate firstOfJanuary2012 = LocalDate.of(2012, 1, 1);

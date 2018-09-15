@@ -1,11 +1,7 @@
 import java.time.LocalDate;
 import java.time.MonthDay;
 import java.time.YearMonth;
-import arithmetic.MonthlyPeriodLength;
-import arithmetic.YearlyPeriodLength;
-import event.DayOfMonthOccurrence;
 import event.EventOccurrence;
-import event.SpecificDateOccurrence;
 
 public class TimeExpression {
 
