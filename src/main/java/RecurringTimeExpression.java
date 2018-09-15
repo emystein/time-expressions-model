@@ -8,13 +8,11 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @EqualsAndHashCode
 public class RecurringTimeExpression extends TimeExpression {
-	// TODO: remove startDate, unneeded here
-	private final LocalDate startDate;
 	private final EventOccurrence eventOccurrence;
 	private final EventRecurrence eventRecurrence;
 
 	public RecurringTimeExpression(LocalDate startDate, EventOccurrence eventOccurrence, PeriodLength periodLength, int periodStep) {
-		this(startDate, eventOccurrence, new EventRecurrence(startDate, periodLength, periodStep));
+		this(eventOccurrence, new EventRecurrence(startDate, periodLength, periodStep));
 	}
 
 	@Override
