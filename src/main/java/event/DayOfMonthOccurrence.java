@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public class DayOfMonthOccurrence implements EventOccurrence {
+public class DayOfMonthOccurrence extends EventOccurrence {
 	private final int dayOfMonth;
 
 	@Override

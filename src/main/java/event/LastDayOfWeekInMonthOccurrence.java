@@ -7,7 +7,7 @@ import java.time.LocalDate;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public class LastDayOfWeekInMonthOccurrence implements EventOccurrence {
+public class LastDayOfWeekInMonthOccurrence extends EventOccurrence {
 	private final DayOfWeek dayOfWeek;
 
 	@Override
