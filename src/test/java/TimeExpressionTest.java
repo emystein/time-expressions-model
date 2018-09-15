@@ -2,8 +2,8 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.MonthDay;
 import java.time.YearMonth;
-import event.EventOccurrence;
 import event.DayOfWeekInMonthOccurrence;
+import event.EventOccurrence;
 import event.LastDayOfWeekInMonthOccurrence;
 import junit.framework.TestCase;
 
