@@ -6,7 +6,7 @@ import arithmetic.PeriodLength;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public class OccurrenceInterval implements Predicate<LocalDate> {
+public class EventRecurrence implements Predicate<LocalDate> {
 	private final LocalDate startDate;
 	private final PeriodLength length;
 	private final int step;
