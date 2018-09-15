@@ -7,4 +7,9 @@ public class SpecificDateOccurrence extends EventOccurrence {
 	public LocalDate forDate(LocalDate date) {
 		return date;
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		return obj instanceof SpecificDateOccurrence;
+	}
 }

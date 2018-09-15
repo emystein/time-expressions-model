@@ -10,4 +10,9 @@ public class DailyPeriodLength implements PeriodLength {
 	public long between(LocalDate from, LocalDate to) {
 		return ChronoUnit.DAYS.between(from, to);
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		return obj instanceof DailyPeriodLength;
+	}
 }

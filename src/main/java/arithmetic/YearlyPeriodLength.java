@@ -14,4 +14,9 @@ public class YearlyPeriodLength implements PeriodLength {
 
 		return length;
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		return obj instanceof YearlyPeriodLength;
+	}
 }

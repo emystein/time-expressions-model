@@ -4,9 +4,11 @@ import static java.time.temporal.TemporalAdjusters.previousOrSame;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
+import lombok.EqualsAndHashCode;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
+@EqualsAndHashCode
 public class LastDayOfWeekInMonthOccurrence extends EventOccurrence {
 	private final DayOfWeek dayOfWeek;
 
