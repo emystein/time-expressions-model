@@ -4,6 +4,11 @@ import static org.junit.Assert.assertTrue;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import org.junit.Test;
+import event.DayOfMonthDescriptor;
+import event.DayOfWeekInMonthDescriptor;
+import event.SpecificDateDescriptor;
+import progress.DateStep;
+import progress.MonthlyStepCommand;
 
 public class RecurringTimeExpressionTest {
 	LocalDate startDate = LocalDate.of(2018, 9, 1);

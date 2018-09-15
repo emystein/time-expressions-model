@@ -3,6 +3,9 @@ import static org.junit.Assert.assertTrue;
 
 import java.time.LocalDate;
 import org.junit.Test;
+import attribute.MonthCheck;
+import progress.DateStep;
+import progress.MonthlyStepCommand;
 
 public class PeriodicityCheckTest {
 	LocalDate firstOfJanuary2012 = LocalDate.of(2012, 1, 1);

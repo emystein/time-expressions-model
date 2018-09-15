@@ -1,10 +1,12 @@
 import java.time.LocalDate;
+import event.DateEventDescriptor;
 import lombok.RequiredArgsConstructor;
+import progress.DateStep;
 
 @RequiredArgsConstructor
 public class RecurringTimeExpression extends TimeExpression {
 	private final LocalDate startDate;
-	// TODO rename DateEventDescriptor
+	// TODO rename event.DateEventDescriptor
 	private final DateEventDescriptor matchDateEventDescriptor;
 	private final DateStep timeStep;
 

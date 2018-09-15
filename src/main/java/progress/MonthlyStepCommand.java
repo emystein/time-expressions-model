@@ -1,4 +1,7 @@
+package progress;
+
 import java.time.LocalDate;
+import progress.StepCommand;
 
 public class MonthlyStepCommand implements StepCommand {
 	@Override

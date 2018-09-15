@@ -1,3 +1,5 @@
+package event;
+
 import static java.time.temporal.TemporalAdjusters.previousOrSame;
 
 import java.time.DayOfWeek;

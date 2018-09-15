@@ -1,3 +1,5 @@
+package event;
+
 import java.time.LocalDate;
 import lombok.RequiredArgsConstructor;
 

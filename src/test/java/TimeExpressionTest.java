@@ -2,6 +2,9 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.MonthDay;
 import java.time.YearMonth;
+import event.DateEventDescriptor;
+import event.DayOfWeekInMonthDescriptor;
+import event.LastDayOfWeekInMonthDescriptor;
 import junit.framework.TestCase;
 
 // ¡ REMEMBER ! YOU CAN ONLY CHANGE PRIMITIVE TYPES SUCH AS the Integers I used to represent days, weeks, and so on

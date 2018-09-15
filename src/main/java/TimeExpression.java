@@ -1,6 +1,13 @@
 import java.time.LocalDate;
 import java.time.MonthDay;
 import java.time.YearMonth;
+import event.DateEventDescriptor;
+import event.DayOfMonthDescriptor;
+import event.SpecificDateDescriptor;
+import progress.DailyStepCommand;
+import progress.DateStep;
+import progress.MonthlyStepCommand;
+import progress.YearlyStepCommand;
 
 public class TimeExpression {
 

@@ -1,7 +1,11 @@
+package event;
+
 import static org.junit.Assert.*;
 
 import java.time.LocalDate;
 import org.junit.Test;
+import event.DateEventDescriptor;
+import event.DayOfMonthDescriptor;
 
 public class DayOfMonthDescriptorTest {
 	@Test

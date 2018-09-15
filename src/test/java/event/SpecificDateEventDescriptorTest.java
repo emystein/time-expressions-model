@@ -1,7 +1,11 @@
+package event;
+
 import static org.junit.Assert.assertEquals;
 
 import java.time.LocalDate;
 import org.junit.Test;
+import event.DateEventDescriptor;
+import event.SpecificDateDescriptor;
 
 public class SpecificDateEventDescriptorTest {
 	@Test

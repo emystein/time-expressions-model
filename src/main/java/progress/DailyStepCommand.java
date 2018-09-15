@@ -1,3 +1,5 @@
+package progress;
+
 import java.time.LocalDate;
 
 public class DailyStepCommand implements StepCommand {
