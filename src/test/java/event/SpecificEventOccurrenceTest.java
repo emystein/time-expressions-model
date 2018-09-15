@@ -10,6 +10,6 @@ public class SpecificEventOccurrenceTest {
 	public void getDate() {
 		EventOccurrence eventOccurrence = new SpecificDateOccurrence();
 		LocalDate date = LocalDate.of(2012, 1, 27);
-		assertEquals(date, eventOccurrence.adjust(date));
+		assertEquals(date, eventOccurrence.forDate(date));
 	}
 }

@@ -8,7 +8,7 @@ public class DayOfMonthOccurrence implements EventOccurrence {
 	private final int dayOfMonth;
 
 	@Override
-	public LocalDate adjust(LocalDate date) {
+	public LocalDate forDate(LocalDate date) {
 		return date.withDayOfMonth(dayOfMonth);
 	}
 }

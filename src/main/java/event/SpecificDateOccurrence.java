@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class SpecificDateOccurrence implements EventOccurrence {
 	@Override
-	public LocalDate adjust(LocalDate date) {
+	public LocalDate forDate(LocalDate date) {
 		return date;
 	}
 }

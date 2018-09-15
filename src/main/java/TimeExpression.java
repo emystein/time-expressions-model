@@ -6,6 +6,7 @@ import arithmetic.MonthlyPeriodLength;
 import arithmetic.YearlyPeriodLength;
 import event.EventOccurrence;
 import event.DayOfMonthOccurrence;
+import event.OccurrenceInterval;
 import event.SpecificDateOccurrence;
 
 public class TimeExpression {
@@ -21,13 +22,13 @@ public class TimeExpression {
 
 	public static TimeExpression monthlyEveryOnFromOnwards(int anAmountOfMonths, int aDayInMonth, YearMonth yearMonth) {
 		EventOccurrence eventOccurrence = new DayOfMonthOccurrence(aDayInMonth);
-		LocalDate startDate = eventOccurrence.adjust(yearMonth.atDay(1));
+		LocalDate startDate = eventOccurrence.forDate(yearMonth.atDay(1));
 //		return new RecurringTimeExpression(startDate, eventOccurrence, new OccurrenceAdvance(anAmountOfMonths, new MonthlyAdvanceCommand()));
 		return new RecurringTimeExpression(eventOccurrence, new OccurrenceInterval(startDate, new MonthlyPeriodLength(), anAmountOfMonths));
 	}
 
 	public static TimeExpression monthlyEveryOnOfFromOnwards(int anAmountOfMonths, YearMonth yearMonth, EventOccurrence eventOccurrence) {
-		LocalDate startDate = eventOccurrence.adjust(yearMonth.atDay(1));
+		LocalDate startDate = eventOccurrence.forDate(yearMonth.atDay(1));
 //		return new RecurringTimeExpression(startDate, eventOccurrence, new OccurrenceAdvance(anAmountOfMonths, new MonthlyAdvanceCommand()));
 		return new RecurringTimeExpression(eventOccurrence, new OccurrenceInterval(startDate, new MonthlyPeriodLength(), anAmountOfMonths));
 	}

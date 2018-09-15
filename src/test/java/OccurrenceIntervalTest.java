@@ -4,6 +4,7 @@ import static org.junit.Assert.assertTrue;
 import java.time.LocalDate;
 import org.junit.Test;
 import arithmetic.MonthlyPeriodLength;
+import event.OccurrenceInterval;
 
 public class OccurrenceIntervalTest {
 	private LocalDate firstOfJanuary2012 = LocalDate.of(2012, 1, 1);
@@ -17,7 +18,7 @@ public class OccurrenceIntervalTest {
 	public void monthlyIntervalShouldMatchStartDate() {
 		interval = new OccurrenceInterval(firstOfJanuary2012, new MonthlyPeriodLength(), 1);
 
-		assertTrue(interval.matches(firstOfJanuary2012));
+		assertTrue(interval.test(firstOfJanuary2012));
 	}
 
 	@Test
@@ -26,17 +27,17 @@ public class OccurrenceIntervalTest {
 
 		interval = new OccurrenceInterval(firstOfJanuary2012, new MonthlyPeriodLength(), 1);
 
-		assertTrue(interval.matches(date));
+		assertTrue(interval.test(date));
 	}
 
 	@Test
 	public void biMonthlyIntervalShouldMatchDatesEveryTwoMonths() {
 		interval = new OccurrenceInterval(firstOfJanuary2012, new MonthlyPeriodLength(), 2);
 
-		assertFalse(interval.matches(month2Date));
-		assertTrue(interval.matches(month3Date));
-		assertFalse(interval.matches(month4Date));
-		assertTrue(interval.matches(month5Date));
+		assertFalse(interval.test(month2Date));
+		assertTrue(interval.test(month3Date));
+		assertFalse(interval.test(month4Date));
+		assertTrue(interval.test(month5Date));
 	}
 
 	@Test
@@ -46,6 +47,6 @@ public class OccurrenceIntervalTest {
 
 		interval = new OccurrenceInterval(januarySix2012, new MonthlyPeriodLength(), 2);
 
-		assertFalse(interval.matches(februaryThree2012));
+		assertFalse(interval.test(februaryThree2012));
 	}
 }

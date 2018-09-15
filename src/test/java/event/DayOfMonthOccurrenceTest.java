@@ -13,6 +13,6 @@ public class DayOfMonthOccurrenceTest {
 		LocalDate firstOfJanuary2012 = LocalDate.of(2012, 1, 1);
 		LocalDate eightOfJanuary2012 = LocalDate.of(2012, 1, 8);
 
-		assertEquals(eightOfJanuary2012, eightOfMonthPoint.adjust(firstOfJanuary2012));
+		assertEquals(eightOfJanuary2012, eightOfMonthPoint.forDate(firstOfJanuary2012));
 	}
 }

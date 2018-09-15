@@ -1,15 +1,19 @@
 import java.time.LocalDate;
 import event.EventOccurrence;
-import lombok.RequiredArgsConstructor;
+import event.EventOccurrenceCondition;
+import event.OccurrenceInterval;
 
-@RequiredArgsConstructor
 public class RecurringTimeExpression extends TimeExpression {
-	private final EventOccurrence eventOccurrence;
 	private final OccurrenceInterval occurrenceInterval;
+	private final EventOccurrenceCondition occurrenceCondition;
+
+	public RecurringTimeExpression(EventOccurrence eventOccurrence, OccurrenceInterval occurrenceInterval) {
+		this.occurrenceInterval = occurrenceInterval;
+		this.occurrenceCondition = new EventOccurrenceCondition(eventOccurrence);
+	}
 
 	@Override
 	public boolean isRecurringOn(LocalDate date) {
-		LocalDate adjustedDate = eventOccurrence.adjust(date);
-		return occurrenceInterval.matches(date) && date.isEqual(adjustedDate);
+		return occurrenceInterval.and(occurrenceCondition).test(date);
 	}
 }

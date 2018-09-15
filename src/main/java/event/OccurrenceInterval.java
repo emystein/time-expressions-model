@@ -1,14 +1,17 @@
+package event;
+
 import java.time.LocalDate;
+import java.util.function.Predicate;
 import arithmetic.PeriodLength;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public class OccurrenceInterval {
+public class OccurrenceInterval implements Predicate<LocalDate> {
 	private final LocalDate startDate;
 	private final PeriodLength length;
 	private final int step;
 
-	public boolean matches(LocalDate date) {
+	public boolean test(LocalDate date) {
 		return length.between(startDate, date) % step == 0;
 	}
 }

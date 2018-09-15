@@ -8,11 +8,11 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 public class DayOfWeekInMonthOccurrence implements EventOccurrence {
-	private final int numberOfWeek;
+	private final int ordinal;
 	private final DayOfWeek dayOfWeek;
 
 	@Override
-	public LocalDate adjust(LocalDate date) {
-		return date.withDayOfMonth(1).with(dayOfWeekInMonth(numberOfWeek, dayOfWeek));
+	public LocalDate forDate(LocalDate date) {
+		return date.withDayOfMonth(1).with(dayOfWeekInMonth(ordinal, dayOfWeek));
 	}
 }

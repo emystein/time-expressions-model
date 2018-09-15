@@ -11,7 +11,7 @@ public class LastDayOfWeekInMonthOccurrence implements EventOccurrence {
 	private final DayOfWeek dayOfWeek;
 
 	@Override
-	public LocalDate adjust(LocalDate date) {
+	public LocalDate forDate(LocalDate date) {
 		return date.withDayOfMonth(date.lengthOfMonth()).with(previousOrSame(dayOfWeek));
 	}
 }

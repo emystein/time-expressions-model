@@ -7,6 +7,7 @@ import org.junit.Test;
 import arithmetic.MonthlyPeriodLength;
 import event.DayOfMonthOccurrence;
 import event.DayOfWeekInMonthOccurrence;
+import event.OccurrenceInterval;
 import event.SpecificDateOccurrence;
 
 public class RecurringTimeExpressionTest {

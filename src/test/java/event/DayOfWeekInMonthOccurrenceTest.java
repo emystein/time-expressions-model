@@ -14,6 +14,6 @@ public class DayOfWeekInMonthOccurrenceTest {
 
 		EventOccurrence firstFridayPoint = new DayOfWeekInMonthOccurrence(1, DayOfWeek.FRIDAY);
 
-		assertEquals(firstFridayOfJanuary, firstFridayPoint.adjust(firstOfJanuary));
+		assertEquals(firstFridayOfJanuary, firstFridayPoint.forDate(firstOfJanuary));
 	}
 }

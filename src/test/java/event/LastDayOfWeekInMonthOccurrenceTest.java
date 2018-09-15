@@ -11,6 +11,6 @@ public class LastDayOfWeekInMonthOccurrenceTest {
 	public void getLastFriday() {
 		EventOccurrence eventOccurrence = new LastDayOfWeekInMonthOccurrence(DayOfWeek.FRIDAY);
 
-		assertEquals(LocalDate.of(2012, 1, 27), eventOccurrence.adjust(LocalDate.of(2012, 1, 26)));
+		assertEquals(LocalDate.of(2012, 1, 27), eventOccurrence.forDate(LocalDate.of(2012, 1, 26)));
 	}
 }
