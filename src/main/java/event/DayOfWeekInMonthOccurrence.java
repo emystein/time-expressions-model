@@ -14,7 +14,7 @@ public class DayOfWeekInMonthOccurrence extends EventOccurrence {
 	private final DayOfWeek dayOfWeek;
 
 	@Override
-	public LocalDate forDate(LocalDate date) {
+	public LocalDate nextFor(LocalDate date) {
 		return date.withDayOfMonth(1).with(dayOfWeekInMonth(ordinal, dayOfWeek));
 	}
 }

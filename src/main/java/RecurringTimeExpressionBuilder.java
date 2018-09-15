@@ -5,11 +5,11 @@ import arithmetic.PeriodLength;
 import arithmetic.YearlyPeriodLength;
 import event.DayOfMonthOccurrence;
 import event.EventOccurrence;
-import event.SpecificDateOccurrence;
+import event.SameDateOccurrence;
 
 public class RecurringTimeExpressionBuilder {
 	private LocalDate startDate;
-	private EventOccurrence eventOccurrence = new SpecificDateOccurrence();
+	private EventOccurrence eventOccurrence = new SameDateOccurrence();
 	private int recurrenceStep;
 	private PeriodLength periodLength;
 

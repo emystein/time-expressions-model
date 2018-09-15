@@ -10,7 +10,7 @@ public class DayOfMonthOccurrence extends EventOccurrence {
 	private final int dayOfMonth;
 
 	@Override
-	public LocalDate forDate(LocalDate date) {
+	public LocalDate nextFor(LocalDate date) {
 		return date.withDayOfMonth(dayOfMonth);
 	}
 }

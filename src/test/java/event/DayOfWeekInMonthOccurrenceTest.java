@@ -12,8 +12,8 @@ public class DayOfWeekInMonthOccurrenceTest {
 		LocalDate firstOfJanuary = LocalDate.of(2012, 1, 1);
 		LocalDate firstFridayOfJanuary = LocalDate.of(2012, 1, 6);
 
-		EventOccurrence firstFridayPoint = new DayOfWeekInMonthOccurrence(1, DayOfWeek.FRIDAY);
+		EventOccurrence firstFridayOccurrence = new DayOfWeekInMonthOccurrence(1, DayOfWeek.FRIDAY);
 
-		assertEquals(firstFridayOfJanuary, firstFridayPoint.forDate(firstOfJanuary));
+		assertEquals(firstFridayOfJanuary, firstFridayOccurrence.nextFor(firstOfJanuary));
 	}
 }

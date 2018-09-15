@@ -9,7 +9,7 @@ import arithmetic.YearlyPeriodLength;
 import event.DayOfMonthOccurrence;
 import event.DayOfWeekInMonthOccurrence;
 import event.EventOccurrence;
-import event.SpecificDateOccurrence;
+import event.SameDateOccurrence;
 
 public class RecurringTimeExpressionBuilderTest {
 	private LocalDate startDate = LocalDate.of(2012, 1, 1);
@@ -26,7 +26,7 @@ public class RecurringTimeExpressionBuilderTest {
 				.days()
 				.build();
 
-		expected = new RecurringTimeExpression(startDate, new SpecificDateOccurrence(), new DailyPeriodLength(), anAmountOfDays);
+		expected = new RecurringTimeExpression(startDate, new SameDateOccurrence(), new DailyPeriodLength(), anAmountOfDays);
 
 		assertEquals(expected, actual);
 	}
@@ -76,7 +76,7 @@ public class RecurringTimeExpressionBuilderTest {
 				.years()
 				.build();
 
-		expected = new RecurringTimeExpression(startDate, new SpecificDateOccurrence(), new YearlyPeriodLength(), anAmountOfYears);
+		expected = new RecurringTimeExpression(startDate, new SameDateOccurrence(), new YearlyPeriodLength(), anAmountOfYears);
 
 		assertEquals(expected, actual);
 	}

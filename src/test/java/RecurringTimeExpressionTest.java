@@ -8,28 +8,28 @@ import arithmetic.MonthlyPeriodLength;
 import event.DayOfMonthOccurrence;
 import event.DayOfWeekInMonthOccurrence;
 import event.EventRecurrence;
-import event.SpecificDateOccurrence;
+import event.SameDateOccurrence;
 
 public class RecurringTimeExpressionTest {
 	LocalDate startDate = LocalDate.of(2018, 9, 1);
 
 	@Test
 	public void everyMonthOccurrenceSameEndDateAsStartDate() {
-		RecurringTimeExpression occurrence = new RecurringTimeExpression(new SpecificDateOccurrence(), new EventRecurrence(startDate, new MonthlyPeriodLength(), 1));
+		RecurringTimeExpression occurrence = new RecurringTimeExpression(new SameDateOccurrence(), new EventRecurrence(startDate, new MonthlyPeriodLength(), 1));
 
 		assertTrue(occurrence.isRecurringOn(startDate));
 	}
 
 	@Test
 	public void everyMonthOccurrence() {
-		RecurringTimeExpression occurrence = new RecurringTimeExpression(new SpecificDateOccurrence(), new EventRecurrence(startDate, new MonthlyPeriodLength(), 1));
+		RecurringTimeExpression occurrence = new RecurringTimeExpression(new SameDateOccurrence(), new EventRecurrence(startDate, new MonthlyPeriodLength(), 1));
 
 		assertTrue(occurrence.isRecurringOn(startDate.plusMonths(1)));
 	}
 
 	@Test
 	public void everyTwoMonthsOccurrence() {
-		RecurringTimeExpression occurrence = new RecurringTimeExpression(new SpecificDateOccurrence(), new EventRecurrence(startDate, new MonthlyPeriodLength(), 2));
+		RecurringTimeExpression occurrence = new RecurringTimeExpression(new SameDateOccurrence(), new EventRecurrence(startDate, new MonthlyPeriodLength(), 2));
 
 		assertFalse(occurrence.isRecurringOn(startDate.plusMonths(1)));
 		assertTrue(occurrence.isRecurringOn(startDate.plusMonths(2)));

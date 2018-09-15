@@ -9,8 +9,8 @@ import org.junit.Test;
 public class LastDayOfWeekInMonthOccurrenceTest {
 	@Test
 	public void getLastFriday() {
-		EventOccurrence eventOccurrence = new LastDayOfWeekInMonthOccurrence(DayOfWeek.FRIDAY);
+		EventOccurrence lastFridayOfMonthOccurrence = new LastDayOfWeekInMonthOccurrence(DayOfWeek.FRIDAY);
 
-		assertEquals(LocalDate.of(2012, 1, 27), eventOccurrence.forDate(LocalDate.of(2012, 1, 26)));
+		assertEquals(LocalDate.of(2012, 1, 27), lastFridayOfMonthOccurrence.nextFor(LocalDate.of(2012, 1, 1)));
 	}
 }

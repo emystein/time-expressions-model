@@ -13,7 +13,7 @@ public class LastDayOfWeekInMonthOccurrence extends EventOccurrence {
 	private final DayOfWeek dayOfWeek;
 
 	@Override
-	public LocalDate forDate(LocalDate date) {
+	public LocalDate nextFor(LocalDate date) {
 		return date.withDayOfMonth(date.lengthOfMonth()).with(previousOrSame(dayOfWeek));
 	}
 }
