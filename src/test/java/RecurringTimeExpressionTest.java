@@ -4,6 +4,7 @@ import static org.junit.Assert.assertTrue;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import org.junit.Test;
+import arithmetic.DailyPeriodLength;
 import arithmetic.MonthlyPeriodLength;
 import event.DayOfMonthOccurrence;
 import event.DayOfWeekInMonthOccurrence;
@@ -11,25 +12,47 @@ import event.EventRecurrence;
 import event.SameDateOccurrence;
 
 public class RecurringTimeExpressionTest {
-	LocalDate startDate = LocalDate.of(2018, 9, 1);
+	private RecurringTimeExpression occurrence;
+	private LocalDate startDate = LocalDate.of(2018, 9, 1);
+
+	@Test
+	public void everyEightDays() {
+		occurrence = new RecurringTimeExpression(new SameDateOccurrence(),
+													new EventRecurrence(startDate, new DailyPeriodLength(), 8));
+
+		assertTrue(occurrence.isRecurringOn(startDate));
+		assertFalse(occurrence.isRecurringOn(startDate.plusDays(1)));
+		assertFalse(occurrence.isRecurringOn(startDate.plusDays(2)));
+		assertFalse(occurrence.isRecurringOn(startDate.plusDays(3)));
+		assertFalse(occurrence.isRecurringOn(startDate.plusDays(4)));
+		assertFalse(occurrence.isRecurringOn(startDate.plusDays(5)));
+		assertFalse(occurrence.isRecurringOn(startDate.plusDays(6)));
+		assertFalse(occurrence.isRecurringOn(startDate.plusDays(7)));
+		assertTrue(occurrence.isRecurringOn(startDate.plusDays(8)));
+		assertFalse(occurrence.isRecurringOn(startDate.plusDays(9)));
+		assertTrue(occurrence.isRecurringOn(startDate.plusDays(16)));
+	}
 
 	@Test
 	public void everyMonthOccurrenceSameEndDateAsStartDate() {
-		RecurringTimeExpression occurrence = new RecurringTimeExpression(new SameDateOccurrence(), new EventRecurrence(startDate, new MonthlyPeriodLength(), 1));
+		occurrence = new RecurringTimeExpression(new SameDateOccurrence(),
+													new EventRecurrence(startDate, new MonthlyPeriodLength(), 1));
 
 		assertTrue(occurrence.isRecurringOn(startDate));
 	}
 
 	@Test
 	public void everyMonthOccurrence() {
-		RecurringTimeExpression occurrence = new RecurringTimeExpression(new SameDateOccurrence(), new EventRecurrence(startDate, new MonthlyPeriodLength(), 1));
+		occurrence = new RecurringTimeExpression(new SameDateOccurrence(),
+													new EventRecurrence(startDate, new MonthlyPeriodLength(), 1));
 
 		assertTrue(occurrence.isRecurringOn(startDate.plusMonths(1)));
 	}
 
 	@Test
 	public void everyTwoMonthsOccurrence() {
-		RecurringTimeExpression occurrence = new RecurringTimeExpression(new SameDateOccurrence(), new EventRecurrence(startDate, new MonthlyPeriodLength(), 2));
+		occurrence = new RecurringTimeExpression(new SameDateOccurrence(),
+													new EventRecurrence(startDate, new MonthlyPeriodLength(), 2));
 
 		assertFalse(occurrence.isRecurringOn(startDate.plusMonths(1)));
 		assertTrue(occurrence.isRecurringOn(startDate.plusMonths(2)));
@@ -40,7 +63,8 @@ public class RecurringTimeExpressionTest {
 	public void everyFirstFriday() {
 		LocalDate firstFridayOfJanuary2012 = LocalDate.of(2012, 1, 6);
 
-		RecurringTimeExpression occurrence = new RecurringTimeExpression(new DayOfWeekInMonthOccurrence(1, DayOfWeek.FRIDAY), new EventRecurrence(firstFridayOfJanuary2012, new MonthlyPeriodLength(), 1));
+		occurrence = new RecurringTimeExpression(new DayOfWeekInMonthOccurrence(1, DayOfWeek.FRIDAY),
+													new EventRecurrence(firstFridayOfJanuary2012, new MonthlyPeriodLength(), 1));
 
 		assertTrue(occurrence.isRecurringOn(firstFridayOfJanuary2012)); // first friday of january
 		assertFalse(occurrence.isRecurringOn(firstFridayOfJanuary2012.plusWeeks(1)));
@@ -62,7 +86,8 @@ public class RecurringTimeExpressionTest {
 	public void theFirstFridayEveryTwoMonths() {
 		LocalDate firstFridayOfJanuary2012 = LocalDate.of(2012, 1, 6);
 
-		RecurringTimeExpression occurrence = new RecurringTimeExpression(new DayOfWeekInMonthOccurrence(1, DayOfWeek.FRIDAY), new EventRecurrence(firstFridayOfJanuary2012, new MonthlyPeriodLength(), 2));
+		occurrence = new RecurringTimeExpression(new DayOfWeekInMonthOccurrence(1, DayOfWeek.FRIDAY),
+														new EventRecurrence(firstFridayOfJanuary2012, new MonthlyPeriodLength(), 2));
 
 		assertTrue(occurrence.isRecurringOn(firstFridayOfJanuary2012)); // first friday of january
 		assertFalse(occurrence.isRecurringOn(firstFridayOfJanuary2012.plusWeeks(1)));
@@ -83,7 +108,9 @@ public class RecurringTimeExpressionTest {
 	@Test
 	public void every8thOfMonth() {
 		LocalDate january8th = LocalDate.of(2012, 1, 8);
-		RecurringTimeExpression occurrence = new RecurringTimeExpression(new DayOfMonthOccurrence(8), new EventRecurrence(january8th, new MonthlyPeriodLength(), 1));
+
+		occurrence = new RecurringTimeExpression(new DayOfMonthOccurrence(8),
+														new EventRecurrence(january8th, new MonthlyPeriodLength(), 1));
 
 		assertTrue(occurrence.isRecurringOn(january8th));
 		assertFalse(occurrence.isRecurringOn(january8th.plusWeeks(1)));
@@ -101,7 +128,8 @@ public class RecurringTimeExpressionTest {
 	public void on8thOfMonthEveryTwoMonths() {
 		LocalDate january8th = LocalDate.of(2012, 1, 8);
 
-		RecurringTimeExpression occurrence = new RecurringTimeExpression(new DayOfMonthOccurrence(8), new EventRecurrence(january8th, new MonthlyPeriodLength(), 2));
+		occurrence = new RecurringTimeExpression(new DayOfMonthOccurrence(8),
+													new EventRecurrence(january8th, new MonthlyPeriodLength(), 2));
 
 		assertTrue(occurrence.isRecurringOn(january8th));
 		assertFalse(occurrence.isRecurringOn(january8th.plusWeeks(1)));
