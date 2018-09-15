@@ -20,7 +20,11 @@ public class RecurringTimeExpressionBuilderTest {
 	public void dailyEveryFromOnwards() {
 		int anAmountOfDays = 14;
 
-		actual = TimeExpressionBuilder.recurring().startingOn(startDate).every(anAmountOfDays).days().build();
+		actual = TimeExpressionBuilder.recurring()
+				.startingOn(startDate)
+				.every(anAmountOfDays)
+				.days()
+				.build();
 
 		expected = new RecurringTimeExpression(startDate, new SpecificDateOccurrence(), new DailyPeriodLength(), anAmountOfDays);
 
@@ -32,7 +36,12 @@ public class RecurringTimeExpressionBuilderTest {
 		int aDayInMonth = 6;
 		int anAmountOfMonths = 3;
 
-		actual = TimeExpressionBuilder.recurring().startingOn(startDate).onDayOfMonth(aDayInMonth).every(anAmountOfMonths).months().build();
+		actual = TimeExpressionBuilder.recurring()
+				.startingOn(startDate)
+				.onDayOfMonth(aDayInMonth)
+				.every(anAmountOfMonths)
+				.months()
+				.build();
 
 		expected = new RecurringTimeExpression(startDate, new DayOfMonthOccurrence(aDayInMonth), new MonthlyPeriodLength(), anAmountOfMonths);
 
@@ -45,7 +54,12 @@ public class RecurringTimeExpressionBuilderTest {
 
 		EventOccurrence theFirstFriday = new DayOfWeekInMonthOccurrence(1, DayOfWeek.FRIDAY);
 
-		actual = TimeExpressionBuilder.recurring().startingOn(startDate).occurring(theFirstFriday).every(anAmountOfMonths).months().build();
+		actual = TimeExpressionBuilder.recurring()
+				.startingOn(startDate)
+				.occurring(theFirstFriday)
+				.every(anAmountOfMonths)
+				.months()
+				.build();
 
 		expected = new RecurringTimeExpression(startDate, theFirstFriday, new MonthlyPeriodLength(), anAmountOfMonths);
 
@@ -56,7 +70,11 @@ public class RecurringTimeExpressionBuilderTest {
 	public void yearlyEveryOnFromOnwards() {
 		int anAmountOfYears = 3;
 
-		actual = TimeExpressionBuilder.recurring().startingOn(startDate).every(anAmountOfYears).years().build();
+		actual = TimeExpressionBuilder.recurring()
+				.startingOn(startDate)
+				.every(anAmountOfYears)
+				.years()
+				.build();
 
 		expected = new RecurringTimeExpression(startDate, new SpecificDateOccurrence(), new YearlyPeriodLength(), anAmountOfYears);
 
