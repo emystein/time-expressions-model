@@ -1,5 +1,5 @@
 import java.time.LocalDate;
 
-public interface DateOccurrence {
+public interface DateEventDescriptor {
 	LocalDate from(LocalDate date);
 }

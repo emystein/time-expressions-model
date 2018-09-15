@@ -5,7 +5,7 @@ import java.time.LocalDate;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public class DayOfWeekInMonthOccurrence implements DateOccurrence {
+public class DayOfWeekInMonthDescriptor implements DateEventDescriptor {
 	private final int numberOfWeek;
 	private final DayOfWeek dayOfWeek;
 

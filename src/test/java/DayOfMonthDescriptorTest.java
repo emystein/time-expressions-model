@@ -3,10 +3,10 @@ import static org.junit.Assert.*;
 import java.time.LocalDate;
 import org.junit.Test;
 
-public class DayOfMonthOccurrenceTest {
+public class DayOfMonthDescriptorTest {
 	@Test
 	public void eightOfMonth() {
-		DateOccurrence eightOfMonthPoint = new DayOfMonthOccurrence(8);
+		DateEventDescriptor eightOfMonthPoint = new DayOfMonthDescriptor(8);
 
 		LocalDate firstOfJanuary2012 = LocalDate.of(2012, 1, 1);
 		LocalDate eightOfJanuary2012 = LocalDate.of(2012, 1, 8);

@@ -2,7 +2,7 @@ import java.time.LocalDate;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public class DayOfMonthOccurrence implements DateOccurrence {
+public class DayOfMonthDescriptor implements DateEventDescriptor {
 	private final int dayOfMonth;
 
 	@Override
