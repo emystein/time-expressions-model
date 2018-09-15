@@ -22,7 +22,6 @@ public class MonthlyPeriodLengthTest {
 		assertEquals(2, length.between(januaryFirst2012, marchFirst2012));
 	}
 
-
 	@Test
 	public void monthlyPeriodLengthBetweenJanuaryTwentyEightAndFebruaryFirstShouldBeTwo() {
 		LocalDate januaryTwentyEight2012 = LocalDate.of(2012, 1, 28);
