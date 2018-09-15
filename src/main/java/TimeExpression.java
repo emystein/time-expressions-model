@@ -11,7 +11,7 @@ import event.SpecificDateOccurrence;
 public class TimeExpression {
 
 	public static TimeExpression on(LocalDate aDate) {
-		return new OnSpecificDateTimeExpression(aDate);
+		return new NonRecurringTimeExpression(aDate);
 	}
 
 	public static TimeExpression dailyEveryFromOnwards(int anAmountOfDays, LocalDate startDate) {

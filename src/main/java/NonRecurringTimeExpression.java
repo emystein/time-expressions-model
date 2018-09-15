@@ -2,7 +2,7 @@ import java.time.LocalDate;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public class OnSpecificDateTimeExpression extends TimeExpression {
+public class NonRecurringTimeExpression extends TimeExpression {
 	private final LocalDate checkDate;
 
 	public boolean isRecurringOn(LocalDate date) {
