@@ -40,7 +40,6 @@ public class TimeExpressionTest extends TestCase {
         assertTrue(everyDayFromTodayToTheNextSixDaysTimeExp.isRecurringOn(today.plusDays(30000)));
     }
 
-	// TODO: remove ignore when below question about assertion on day 30001 is answered
     public void testRecursEveryTwoDays() {
         int twoDays = 2; // you can change the Int type by the one you make up
         LocalDate today = LocalDate.now();
@@ -61,7 +60,7 @@ public class TimeExpressionTest extends TestCase {
         assertFalse(everyTwoDaysFromTodayToTheNextSevenDaysTimeExp.isRecurringOn(today.plusDays(5)));
         assertTrue(everyTwoDaysFromTodayToTheNextSevenDaysTimeExp.isRecurringOn(today.plusDays(6)));
         assertTrue(everyTwoDaysFromTodayToTheNextSevenDaysTimeExp.isRecurringOn(today.plusDays(30000)));
-        // FIXME: I think this assertion is wrong, should be assertFalse instead of assertTrue
+        // FIXME: Either this assertion is wrong or OccurrenceAdvance has a bug
         assertTrue(everyTwoDaysFromTodayToTheNextSevenDaysTimeExp.isRecurringOn(today.plusDays(30001)));
     }
 
