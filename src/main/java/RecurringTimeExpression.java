@@ -10,6 +10,6 @@ public class RecurringTimeExpression extends TimeExpression {
 
 	@Override
 	public boolean isRecurringOn(LocalDate date) {
-		return occurrenceInterval.and(eventOccurrence).test(date);
+		return eventOccurrence.and(occurrenceInterval).test(date);
 	}
 }
