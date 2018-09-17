@@ -13,16 +13,9 @@ public class RecurringTimeExpressionBuilder {
 	private int recurrenceStep;
 	private PeriodLength periodLength;
 
-	public RecurringTimeExpressionBuilder() {
-		// empty
-	}
-
-	private RecurringTimeExpressionBuilder(LocalDate startDate) {
-		this.startDate = startDate;
-	}
-
 	public RecurringTimeExpressionBuilder startingOn(LocalDate startDate) {
-		return new RecurringTimeExpressionBuilder(startDate);
+		this.startDate = startDate;
+		return this;
 	}
 
 	public RecurringTimeExpressionBuilder onDayOfMonth(int aDayInMonth) {
@@ -56,6 +49,7 @@ public class RecurringTimeExpressionBuilder {
 	}
 
 	public TimeExpression build() {
+		// TODO: add checks for all parameters set (startDate, eventOccurrence, periodLength, recurrenceStep) before calling this method
 		return new RecurringTimeExpression(startDate, eventOccurrence, periodLength, recurrenceStep);
 	}
 }
