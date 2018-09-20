@@ -80,4 +80,23 @@ public class RecurringTimeExpressionBuilderTest {
 
 		assertEquals(expected, actual);
 	}
+
+
+	@Test
+	public void untilEndDate() {
+		int aDayInMonth = 6;
+		int anAmountOfMonths = 3;
+
+		LocalDate endDate = startDate.plusMonths(3);
+		actual = TimeExpressionBuilder.recurring()
+				.startingOn(startDate)
+				.every(anAmountOfMonths)
+				.months()
+				.until(endDate)
+				.build();
+
+		expected = new RecurringTimeExpression(startDate, new SameDateOccurrence(), new MonthlyPeriodLength(), anAmountOfMonths, endDate);
+
+		assertEquals(expected, actual);
+	}
 }

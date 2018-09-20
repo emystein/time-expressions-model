@@ -4,16 +4,22 @@ import java.time.LocalDate;
 import java.util.function.Predicate;
 import arithmetic.PeriodLength;
 import lombok.EqualsAndHashCode;
-import lombok.RequiredArgsConstructor;
 
-@RequiredArgsConstructor
 @EqualsAndHashCode
 public class EventRecurrence implements Predicate<LocalDate> {
-	private final LocalDate startDate;
-	private final PeriodLength length;
-	private final int step;
+	private final RecurrenceDateMatch recurrenceDateMatch;
+	private final BeforeEndDateMatch beforeEndDateMatch;
+
+	public EventRecurrence(LocalDate startDate, PeriodLength periodLength, int step) {
+		this(startDate, periodLength, step, null);
+	}
+
+	public EventRecurrence(LocalDate startDate, PeriodLength periodLength, int recurrenceStep, LocalDate endDate) {
+		this.recurrenceDateMatch = new RecurrenceDateMatch(startDate, periodLength, recurrenceStep);
+		this.beforeEndDateMatch = new BeforeEndDateMatch(endDate);
+	}
 
 	public boolean test(LocalDate date) {
-		return length.between(startDate, date) % step == 0;
+		return recurrenceDateMatch.and(beforeEndDateMatch).test(date);
 	}
 }

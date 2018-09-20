@@ -50,4 +50,17 @@ public class EventRecurrenceTest {
 
 		assertFalse(recurrence.test(februaryThree2012));
 	}
+
+	@Test
+	public void everyMonthUntilAnEndDate() {
+		LocalDate endDate = firstOfJanuary2012.plusMonths(3);
+
+		recurrence = new EventRecurrence(firstOfJanuary2012, new MonthlyPeriodLength(), 1, endDate);
+
+		assertTrue(recurrence.test(firstOfJanuary2012));
+		assertTrue(recurrence.test(firstOfJanuary2012.plusMonths(1)));
+		assertTrue(recurrence.test(firstOfJanuary2012.plusMonths(2)));
+		assertTrue(recurrence.test(firstOfJanuary2012.plusMonths(3)));
+		assertFalse(recurrence.test(firstOfJanuary2012.plusMonths(4)));
+	}
 }

@@ -142,4 +142,6 @@ public class RecurringTimeExpressionTest {
 		assertFalse(occurrence.isRecurringOn(LocalDate.of(2012, 4, 8)));
 		assertTrue(occurrence.isRecurringOn(LocalDate.of(2012, 5, 8)));
 	}
+
+
 }

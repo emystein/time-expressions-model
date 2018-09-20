@@ -12,6 +12,7 @@ public class RecurringTimeExpressionBuilder {
 	private EventOccurrence eventOccurrence = new SameDateOccurrence();
 	private int recurrenceStep;
 	private PeriodLength periodLength;
+	private LocalDate endDate;
 
 	public RecurringTimeExpressionBuilder startingOn(LocalDate startDate) {
 		this.startDate = startDate;
@@ -48,8 +49,13 @@ public class RecurringTimeExpressionBuilder {
 		return this;
 	}
 
+	public RecurringTimeExpressionBuilder until(LocalDate endDate) {
+		this.endDate = endDate;
+		return this;
+	}
+
 	public TimeExpression build() {
 		// TODO: add checks for all parameters set (startDate, eventOccurrence, periodLength, recurrenceStep) before calling this method
-		return new RecurringTimeExpression(startDate, eventOccurrence, periodLength, recurrenceStep);
+		return new RecurringTimeExpression(startDate, eventOccurrence, periodLength, recurrenceStep, endDate);
 	}
 }
