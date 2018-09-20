@@ -26,14 +26,3 @@ The 3rd Friday every 2 months from January 2018 to August 2019.
 
 On August 8 every year from 2018 to 2024.
 
-# What do I have to do ?
-
-Write the corresponding implementations in `TimeExpression` to pass the test cases of `TimeExpressionTest`.
-
-## Why do I have to do it ?
-
-We want to see how you design the model of the domain and how you apply TDD as a software development technique
-
-# Important !
-
-In the test cases you can create new types that replace primitives like `int`.
