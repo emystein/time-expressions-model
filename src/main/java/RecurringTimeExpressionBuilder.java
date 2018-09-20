@@ -5,6 +5,7 @@ import arithmetic.PeriodLength;
 import arithmetic.YearlyPeriodLength;
 import event.DayOfMonthOccurrence;
 import event.EventOccurrence;
+import event.EventRecurrence;
 import event.SameDateOccurrence;
 
 public class RecurringTimeExpressionBuilder {
@@ -55,7 +56,6 @@ public class RecurringTimeExpressionBuilder {
 	}
 
 	public TimeExpression build() {
-		// TODO: add checks for all parameters set (startDate, eventOccurrence, periodLength, recurrenceStep) before calling this method
-		return new RecurringTimeExpression(startDate, eventOccurrence, periodLength, recurrenceStep, endDate);
+		return new RecurringTimeExpression(eventOccurrence, new EventRecurrence(startDate, periodLength, recurrenceStep, endDate));
 	}
 }

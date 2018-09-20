@@ -9,6 +9,7 @@ import arithmetic.YearlyPeriodLength;
 import event.DayOfMonthOccurrence;
 import event.DayOfWeekInMonthOccurrence;
 import event.EventOccurrence;
+import event.EventRecurrence;
 import event.SameDateOccurrence;
 
 public class RecurringTimeExpressionBuilderTest {
@@ -26,7 +27,7 @@ public class RecurringTimeExpressionBuilderTest {
 				.days()
 				.build();
 
-		expected = new RecurringTimeExpression(startDate, new SameDateOccurrence(), new DailyPeriodLength(), anAmountOfDays);
+		expected = new RecurringTimeExpression(new SameDateOccurrence(), new EventRecurrence(startDate, new DailyPeriodLength(), anAmountOfDays));
 
 		assertEquals(expected, actual);
 	}
@@ -43,7 +44,7 @@ public class RecurringTimeExpressionBuilderTest {
 				.months()
 				.build();
 
-		expected = new RecurringTimeExpression(startDate, new DayOfMonthOccurrence(aDayInMonth), new MonthlyPeriodLength(), anAmountOfMonths);
+		expected = new RecurringTimeExpression(new DayOfMonthOccurrence(aDayInMonth), new EventRecurrence(startDate, new MonthlyPeriodLength(), anAmountOfMonths));
 
 		assertEquals(expected, actual);
 	}
@@ -61,7 +62,7 @@ public class RecurringTimeExpressionBuilderTest {
 				.months()
 				.build();
 
-		expected = new RecurringTimeExpression(startDate, theFirstFriday, new MonthlyPeriodLength(), anAmountOfMonths);
+		expected = new RecurringTimeExpression(theFirstFriday, new EventRecurrence(startDate, new MonthlyPeriodLength(), anAmountOfMonths));
 
 		assertEquals(expected, actual);
 	}
@@ -76,7 +77,7 @@ public class RecurringTimeExpressionBuilderTest {
 				.years()
 				.build();
 
-		expected = new RecurringTimeExpression(startDate, new SameDateOccurrence(), new YearlyPeriodLength(), anAmountOfYears);
+		expected = new RecurringTimeExpression(new SameDateOccurrence(), new EventRecurrence(startDate, new YearlyPeriodLength(), anAmountOfYears));
 
 		assertEquals(expected, actual);
 	}
@@ -95,7 +96,7 @@ public class RecurringTimeExpressionBuilderTest {
 				.until(endDate)
 				.build();
 
-		expected = new RecurringTimeExpression(startDate, new SameDateOccurrence(), new MonthlyPeriodLength(), anAmountOfMonths, endDate);
+		expected = new RecurringTimeExpression(new SameDateOccurrence(), new EventRecurrence(startDate, new MonthlyPeriodLength(), anAmountOfMonths, endDate));
 
 		assertEquals(expected, actual);
 	}
