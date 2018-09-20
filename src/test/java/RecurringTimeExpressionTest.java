@@ -14,11 +14,12 @@ import event.SameDateOccurrence;
 public class RecurringTimeExpressionTest {
 	private RecurringTimeExpression occurrence;
 	private LocalDate startDate = LocalDate.of(2018, 9, 1);
+	private LocalDate noEndDate = null;
 
 	@Test
 	public void everyEightDays() {
 		occurrence = new RecurringTimeExpression(new SameDateOccurrence(),
-													new EventRecurrence(startDate, new DailyPeriodLength(), 8));
+													new EventRecurrence(startDate, new DailyPeriodLength(), 8, noEndDate));
 
 		assertTrue(occurrence.isRecurringOn(startDate));
 		assertFalse(occurrence.isRecurringOn(startDate.plusDays(1)));
@@ -36,7 +37,7 @@ public class RecurringTimeExpressionTest {
 	@Test
 	public void everyMonthOccurrenceSameEndDateAsStartDate() {
 		occurrence = new RecurringTimeExpression(new SameDateOccurrence(),
-													new EventRecurrence(startDate, new MonthlyPeriodLength(), 1));
+													new EventRecurrence(startDate, new MonthlyPeriodLength(), 1, noEndDate));
 
 		assertTrue(occurrence.isRecurringOn(startDate));
 	}
@@ -44,7 +45,7 @@ public class RecurringTimeExpressionTest {
 	@Test
 	public void everyMonthOccurrence() {
 		occurrence = new RecurringTimeExpression(new SameDateOccurrence(),
-													new EventRecurrence(startDate, new MonthlyPeriodLength(), 1));
+													new EventRecurrence(startDate, new MonthlyPeriodLength(), 1, noEndDate));
 
 		assertTrue(occurrence.isRecurringOn(startDate.plusMonths(1)));
 	}
@@ -52,7 +53,7 @@ public class RecurringTimeExpressionTest {
 	@Test
 	public void everyTwoMonthsOccurrence() {
 		occurrence = new RecurringTimeExpression(new SameDateOccurrence(),
-													new EventRecurrence(startDate, new MonthlyPeriodLength(), 2));
+													new EventRecurrence(startDate, new MonthlyPeriodLength(), 2, noEndDate));
 
 		assertFalse(occurrence.isRecurringOn(startDate.plusMonths(1)));
 		assertTrue(occurrence.isRecurringOn(startDate.plusMonths(2)));
@@ -64,7 +65,7 @@ public class RecurringTimeExpressionTest {
 		LocalDate firstFridayOfJanuary2012 = LocalDate.of(2012, 1, 6);
 
 		occurrence = new RecurringTimeExpression(new DayOfWeekInMonthOccurrence(1, DayOfWeek.FRIDAY),
-													new EventRecurrence(firstFridayOfJanuary2012, new MonthlyPeriodLength(), 1));
+													new EventRecurrence(firstFridayOfJanuary2012, new MonthlyPeriodLength(), 1, noEndDate));
 
 		assertTrue(occurrence.isRecurringOn(firstFridayOfJanuary2012)); // first friday of january
 		assertFalse(occurrence.isRecurringOn(firstFridayOfJanuary2012.plusWeeks(1)));
@@ -87,7 +88,7 @@ public class RecurringTimeExpressionTest {
 		LocalDate firstFridayOfJanuary2012 = LocalDate.of(2012, 1, 6);
 
 		occurrence = new RecurringTimeExpression(new DayOfWeekInMonthOccurrence(1, DayOfWeek.FRIDAY),
-														new EventRecurrence(firstFridayOfJanuary2012, new MonthlyPeriodLength(), 2));
+														new EventRecurrence(firstFridayOfJanuary2012, new MonthlyPeriodLength(), 2, noEndDate));
 
 		assertTrue(occurrence.isRecurringOn(firstFridayOfJanuary2012)); // first friday of january
 		assertFalse(occurrence.isRecurringOn(firstFridayOfJanuary2012.plusWeeks(1)));
@@ -110,7 +111,7 @@ public class RecurringTimeExpressionTest {
 		LocalDate january8th = LocalDate.of(2012, 1, 8);
 
 		occurrence = new RecurringTimeExpression(new DayOfMonthOccurrence(8),
-														new EventRecurrence(january8th, new MonthlyPeriodLength(), 1));
+														new EventRecurrence(january8th, new MonthlyPeriodLength(), 1, noEndDate));
 
 		assertTrue(occurrence.isRecurringOn(january8th));
 		assertFalse(occurrence.isRecurringOn(january8th.plusWeeks(1)));
@@ -129,7 +130,7 @@ public class RecurringTimeExpressionTest {
 		LocalDate january8th = LocalDate.of(2012, 1, 8);
 
 		occurrence = new RecurringTimeExpression(new DayOfMonthOccurrence(8),
-													new EventRecurrence(january8th, new MonthlyPeriodLength(), 2));
+													new EventRecurrence(january8th, new MonthlyPeriodLength(), 2, noEndDate));
 
 		assertTrue(occurrence.isRecurringOn(january8th));
 		assertFalse(occurrence.isRecurringOn(january8th.plusWeeks(1)));

@@ -14,10 +14,11 @@ public class EventRecurrenceTest {
 	private LocalDate month4Date = LocalDate.of(2012, 4, 1);
 	private LocalDate month5Date = LocalDate.of(2012, 5, 1);
 	private EventRecurrence recurrence;
+	private LocalDate noEndDate = null;
 
 	@Test
 	public void monthlyIntervalShouldMatchStartDate() {
-		recurrence = new EventRecurrence(firstOfJanuary2012, new MonthlyPeriodLength(), 1);
+		recurrence = new EventRecurrence(firstOfJanuary2012, new MonthlyPeriodLength(), 1, noEndDate);
 
 		assertTrue(recurrence.test(firstOfJanuary2012));
 	}
@@ -26,14 +27,14 @@ public class EventRecurrenceTest {
 	public void monthlyIntervalShouldMatchDateInTheSameMonthThanStartDate() {
 		LocalDate date = firstOfJanuary2012.plusWeeks(1);
 
-		recurrence = new EventRecurrence(firstOfJanuary2012, new MonthlyPeriodLength(), 1);
+		recurrence = new EventRecurrence(firstOfJanuary2012, new MonthlyPeriodLength(), 1, noEndDate);
 
 		assertTrue(recurrence.test(date));
 	}
 
 	@Test
 	public void biMonthlyIntervalShouldMatchDatesEveryTwoMonths() {
-		recurrence = new EventRecurrence(firstOfJanuary2012, new MonthlyPeriodLength(), 2);
+		recurrence = new EventRecurrence(firstOfJanuary2012, new MonthlyPeriodLength(), 2, noEndDate);
 
 		assertFalse(recurrence.test(month2Date));
 		assertTrue(recurrence.test(month3Date));
@@ -46,7 +47,7 @@ public class EventRecurrenceTest {
 		LocalDate januarySix2012 = LocalDate.of(2012, 1, 6);
 		LocalDate februaryThree2012 = LocalDate.of(2012, 2, 3);
 
-		recurrence = new EventRecurrence(januarySix2012, new MonthlyPeriodLength(), 2);
+		recurrence = new EventRecurrence(januarySix2012, new MonthlyPeriodLength(), 2, noEndDate);
 
 		assertFalse(recurrence.test(februaryThree2012));
 	}
